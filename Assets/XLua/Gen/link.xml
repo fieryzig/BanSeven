@@ -4,6 +4,7 @@
 
 	<assembly fullname="Assembly-CSharp">
 	    <type fullname="Network" preserve="all"/>
+		<type fullname="RayHitHelper" preserve="all"/>
 		
 	</assembly>
 
@@ -39,6 +40,7 @@
 		<type fullname="UnityEngine.Renderer" preserve="all"/>
 		<type fullname="UnityEngine.WWW" preserve="all"/>
 		<type fullname="UnityEngine.Debug" preserve="all"/>
+		<type fullname="UnityEngine.Input" preserve="all"/>
 		
 	</assembly>
 

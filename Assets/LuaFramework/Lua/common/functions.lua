@@ -1,3 +1,11 @@
+function hide(obj)
+	log(obj.name)
+	obj:GetComponent('RectTransform').position = obj:GetComponent('RectTransform').position + Vector3(1000,1000,0);
+end
+
+function show(obj)
+	obj:GetComponent('RectTransform').position = obj:GetComponent('RectTransform').position - Vector3(1000,1000,0);
+end
 
 --输出日志--
 function log(str)

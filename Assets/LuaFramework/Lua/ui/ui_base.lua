@@ -5,7 +5,7 @@ ui基类cls_ui_base
 
 ]]
 
-local UpdateBeat = UpdateBeat
+--local UpdateBeat = UpdateBeat
 
 cls_ui_base = class("cls_ui_base")
 cls_ui_base._id = 0
@@ -54,12 +54,12 @@ function cls_ui_base:ctor()
     end
 end
 
-
+--[[
 function cls_ui_base:EnableUpdate()
     self._update_enable = true
     UpdateBeat:Add(self.Update, self)
     -- body
-end
+end]]
 
 function cls_ui_base:Update()
     -- nothing
@@ -82,9 +82,9 @@ function cls_ui_base:OnAwake()
 end
 
 function cls_ui_base:OnDestroy()
-    if self._update_enable then
-        UpdateBeat:Remove(self.Update, self)
-    end
+    --if self._update_enable then
+        --UpdateBeat:Remove(self.Update, self)
+    --end
 
     --移除该ui所有注册的事件
     removeNotifys(self)

@@ -10,6 +10,7 @@ function cls_ui_start:OnStart()
     self.m_offline_btn = self.m_transform:FindChild("OfflineBtn").gameObject;
     self.m_lua_behaviour:AddClick(self.m_offline_btn, function (obj)
         --
+        offline = 1;
         SendGlobalMessage("ENUM_SHOW_MAIN_UI")
         self:Close()
     end)

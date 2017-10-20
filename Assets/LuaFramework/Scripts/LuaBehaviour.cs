@@ -34,6 +34,11 @@ namespace LuaFramework
             Util.CallGlobalLuaFunction("HandleUIMessage", m_lua_id, "OnClick", go);
         }
 
+        protected void Update()
+        {
+            Util.CallGlobalLuaFunction("HandleUIMessage", m_lua_id, "Update");
+        }
+
         /// <summary>
         /// 添加单击事件
         /// </summary>
@@ -46,7 +51,7 @@ namespace LuaFramework
                     luafunc.Call(go);
                 });
         }
-
+        
         /// <summary>
         /// 删除单击事件
         /// </summary>
