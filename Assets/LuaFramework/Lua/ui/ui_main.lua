@@ -60,8 +60,9 @@ function cls_ui_main:OnStart()
     self.m_lua_behaviour:AddClick(self.m_submit_btn, function(obj)
         chosen = self:GetChosenCard()
         if (chosen == nil) then return; end
-        chosen.name = string.sub(chosen.name,1,-8);
-        color, num = SplitCard(chosen.name); updown = legal[color];
+        local name = chosen.name;
+        name = string.sub(name,1,-8);
+        color, num = SplitCard(name); updown = legal[color];
         print('debug:'..color..' '..updown[1]..' '..updown[2]);
         if updown[1] ~= num and updown[2] ~= num then return; end
         if num == 7 then 
@@ -72,8 +73,8 @@ function cls_ui_main:OnStart()
         else
             updown[1] = updown[1] - 1;
         end 
-        LuaHelper.SubmitCard(chosen.name, color, num, 0);
-        self.cards_ui[chosen.name] = nil;
+        LuaHelper.SubmitCard(name, color, num, 0);
+        self.cards_ui[name] = nil;
         GameObject.Destroy(chosen);
         self.count = self.count + 1;
         next_turn();
