@@ -15,15 +15,14 @@ using System.Collections.Generic;
 namespace XLua.CSObjectWrap
 {
     using Utils = XLua.Utils;
-    public class RayHitHelperWrap 
+    public class TextControllerWrap 
     {
         public static void __Register(RealStatePtr L)
         {
 			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-			System.Type type = typeof(RayHitHelper);
-			Utils.BeginObjectRegister(type, L, translator, 0, 1, 0, 0);
+			System.Type type = typeof(TextController);
+			Utils.BeginObjectRegister(type, L, translator, 0, 0, 0, 0);
 			
-			Utils.RegisterFunc(L, Utils.METHOD_IDX, "GetHit", _m_GetHit);
 			
 			
 			
@@ -33,9 +32,9 @@ namespace XLua.CSObjectWrap
 			    null, null, null);
 
 		    Utils.BeginClassRegister(type, L, __CreateInstance, 2, 0, 0);
+			Utils.RegisterFunc(L, Utils.CLS_IDX, "SubmitCard", _m_SubmitCard_xlua_st_);
+            
 			
-			
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "instance", RayHitHelper.instance);
             
 			
 			
@@ -46,7 +45,24 @@ namespace XLua.CSObjectWrap
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
         static int __CreateInstance(RealStatePtr L)
         {
-            return LuaAPI.luaL_error(L, "RayHitHelper does not have a constructor!");
+            
+			try {
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+				if(LuaAPI.lua_gettop(L) == 1)
+				{
+					
+					TextController __cl_gen_ret = new TextController();
+					translator.Push(L, __cl_gen_ret);
+                    
+					return 1;
+				}
+				
+			}
+			catch(System.Exception __gen_e) {
+				return LuaAPI.luaL_error(L, "c# exception:" + __gen_e);
+			}
+            return LuaAPI.luaL_error(L, "invalid arguments to TextController constructor!");
+            
         }
         
 		
@@ -57,26 +73,24 @@ namespace XLua.CSObjectWrap
         
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _m_GetHit(RealStatePtr L)
+        static int _m_SubmitCard_xlua_st_(RealStatePtr L)
         {
 		    try {
             
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-            
-            
-                RayHitHelper __cl_gen_to_be_invoked = (RayHitHelper)translator.FastGetCSObj(L, 1);
             
             
                 
                 {
-                    UnityEngine.Vector3 pos;translator.Get(L, 2, out pos);
+                    string card = LuaAPI.lua_tostring(L, 1);
+                    string color = LuaAPI.lua_tostring(L, 2);
+                    int num = LuaAPI.xlua_tointeger(L, 3);
+                    int turn = LuaAPI.xlua_tointeger(L, 4);
                     
-                        string __cl_gen_ret = __cl_gen_to_be_invoked.GetHit( pos );
-                        LuaAPI.lua_pushstring(L, __cl_gen_ret);
+                    TextController.SubmitCard( card, color, num, turn );
                     
                     
                     
-                    return 1;
+                    return 0;
                 }
                 
             } catch(System.Exception __gen_e) {

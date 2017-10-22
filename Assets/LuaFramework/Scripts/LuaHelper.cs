@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using XLua;
 using System;
+using UnityEngine.UI;
 
 namespace LuaFramework
 {
@@ -40,6 +41,39 @@ namespace LuaFramework
         public static ResourceManager GetResManager()
         {
             return AppFacade.GetManager<ResourceManager>();
+        }
+
+        /******************************************************************/
+
+        public static void ChangeColor(GameObject obj, Color color)
+        {
+            obj.GetComponent<Image>().color = color;
+        }
+
+        public static void SubmitCard(string card, string color, int num, int turn)
+        {
+            Debug.Log("Player" + turn + "submits: " + card);
+            TextController.SubmitCard(card, color, num, turn);
+            int score = num;
+            if (color == "d") score *= 2;
+            else if (color == "h") score *= 3;
+            else if (color == "s") score *= 4;
+            ScoreHandler.instance.modScore(turn, score); 
+        }
+        
+        public static void SetScore(int id, int score)
+        {
+            ScoreHandler.instance.setScore(id, score);
+        }
+
+        public static void GetScore()
+        {
+            ScoreHandler.instance.getScore();
+        }
+
+        public static void Init()
+        {
+            
         }
     }
 }

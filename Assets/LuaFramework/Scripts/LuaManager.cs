@@ -13,6 +13,7 @@ namespace LuaFramework
         void Awake()
         {
             lua = new LuaEnv();
+            
             lua.AddLoader((ref string filename) => {
                 filename = filename + ".lua";
                 if (File.Exists(Application.dataPath + "/LuaFramework/Lua/" + filename))
@@ -22,9 +23,10 @@ namespace LuaFramework
                 }
                 return null;           
             });
+            
             lua.AddLoader((ref string filename) => {
                 filename = filename + ".lua";
-                TextAsset script = Resources.Load<TextAsset>("/Lua/" + filename);
+                TextAsset script = Resources.Load<TextAsset>("Lua/" + filename);
                 if (script != null) return script.bytes;
                 return null;
             });

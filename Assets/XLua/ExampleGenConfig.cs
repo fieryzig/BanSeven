@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 using XLua;
+using UnityEngine.UI;
 
 //配置的详细介绍请看Doc下《XLua的配置.doc》
 public static class ExampleGenConfig
@@ -45,8 +46,6 @@ public static class ExampleGenConfig
                 typeof(System.Collections.Generic.List<int>),
                 typeof(Action<string>),
                 typeof(UnityEngine.Debug),
-                typeof(Input)
-                   
             };
 
     //C#静态调用Lua的配置（包括事件的原型），仅可以配delegate，interface

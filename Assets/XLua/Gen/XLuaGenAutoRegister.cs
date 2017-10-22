@@ -23,7 +23,7 @@ namespace XLua.CSObjectWrap
 			    
 				translator.DelayWrapLoader(typeof(Network), NetworkWrap.__Register);
 				
-				translator.DelayWrapLoader(typeof(RayHitHelper), RayHitHelperWrap.__Register);
+				translator.DelayWrapLoader(typeof(TextController), TextControllerWrap.__Register);
 				
 				translator.DelayWrapLoader(typeof(object), SystemObjectWrap.__Register);
 				
@@ -78,8 +78,6 @@ namespace XLua.CSObjectWrap
 				translator.DelayWrapLoader(typeof(System.Collections.Generic.List<int>), SystemCollectionsGenericList_1_SystemInt32_Wrap.__Register);
 				
 				translator.DelayWrapLoader(typeof(UnityEngine.Debug), UnityEngineDebugWrap.__Register);
-				
-				translator.DelayWrapLoader(typeof(UnityEngine.Input), UnityEngineInputWrap.__Register);
 				
 				
 				
